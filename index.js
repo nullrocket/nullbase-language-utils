@@ -15,8 +15,7 @@ module.exports = {
 selfx = this;
  },
   preBuild: function () {
-  console.log('preBuild');
-    console.log(selfx);
+
 
     var languageDir = selfx.addonsFactory.project.config(process.env.EMBER_ENV).languageDir;
 

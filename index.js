@@ -11,7 +11,8 @@ module.exports = {
   name: 'nullbase-language-utils',
 
   preBuild: function () {
-
+    console.log(this);
+    console.log(...arguments);
     var languageDir = this.addonsFactory.project.config(process.env.EMBER_ENV).languageDir;
 
     var defaultLanguage = reload(this.addonsFactory.project.root + '/app/language/default');

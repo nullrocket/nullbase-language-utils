@@ -10,10 +10,12 @@ var reload = require('require-reload')(require);
 module.exports = {
   name: 'nullbase-language-utils',
  init: function(){
-   this._super.included.apply(this, arguments);
+   this._super.init && this._super.init.apply(this, arguments);
+   console.log('init')
+   console.log(this)
  },
   preBuild: function () {
-
+  console.log('preBuild');
     console.log(this);
     console.log(...arguments);
     var languageDir = this.addonsFactory.project.config(process.env.EMBER_ENV).languageDir;

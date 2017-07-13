@@ -7,27 +7,27 @@ var fse = require('fs-extra');
 var currentFingerprint = '';
 var reload = require('require-reload')(require);
 //var defaultLanguage = require('../assets/lang/src/default.js');
+var selfx = null;
 module.exports = {
   name: 'nullbase-language-utils',
  init: function(){
    this._super.init && this._super.init.apply(this, arguments);
-   console.log('init')
-   console.log(this)
+selfx = this;
  },
   preBuild: function () {
   console.log('preBuild');
-    console.log(this);
-    console.log(...arguments);
-    var languageDir = this.addonsFactory.project.config(process.env.EMBER_ENV).languageDir;
+    console.log(selfx);
 
-    var defaultLanguage = reload(this.addonsFactory.project.root + '/app/language/default');
+    var languageDir = selfx.addonsFactory.project.config(process.env.EMBER_ENV).languageDir;
+
+    var defaultLanguage = reload(selfx.addonsFactory.project.root + '/app/language/default');
 
     var defaultLanguageString = JSON.stringify(defaultLanguage);
 
 
     var result = XXH(defaultLanguageString, 0xCAFEBABE).toString(16);
 
-    var self = this;
+    var self = selfx;
     if ( result != currentFingerprint ) {
       try {
         console.log('Building Language files.')

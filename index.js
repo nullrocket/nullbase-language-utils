@@ -31,7 +31,7 @@ selfx = this;
       try {
         console.log('Building Language files.')
         try {
-          fse.removeSync(self.addonsFactory.project.root + '/app-assets/lang/' + languageDir + '/default.*')
+          fse.removeSync(self.addonsFactory.project.root +  languageDir + '/default.*')
         }
         catch(e)
         {

@@ -18,6 +18,7 @@ selfx = this;
 
 
     var languageDir = selfx.addonsFactory.project.config(process.env.EMBER_ENV).languageDir;
+    var rootURL = selfx.addonsFactory.project.config(process.env.EMBER_ENV).rootURL;
 
     var defaultLanguage = reload(selfx.addonsFactory.project.root + '/app/language/default');
 
@@ -40,7 +41,7 @@ selfx = this;
         currentFingerprint = result;
         jsonfile.writeFileSync(self.addonsFactory.project.root +  languageDir + '/default.' + result + '.json', defaultLanguage);
 
-        fse.writeFileSync(self.addonsFactory.project.root + '/app/lang-fingerprint.js', 'export default  {"default":"' + languageDir + '/default.' + result + '.json"};');
+        fse.writeFileSync(self.addonsFactory.project.root + '/app/lang-fingerprint.js', 'export default  {"default":"' + rootURL+languageDir + '/default.' + result + '.json"};');
 
         console.log("Language files built.");
 

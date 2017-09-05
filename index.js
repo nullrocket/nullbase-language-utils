@@ -38,9 +38,9 @@ selfx = this;
 
         }
         currentFingerprint = result;
-        jsonfile.writeFileSync(self.addonsFactory.project.root + '/app-assets/lang/' + languageDir + '/default.' + result + '.json', defaultLanguage);
+        jsonfile.writeFileSync(self.addonsFactory.project.root +  languageDir + '/default.' + result + '.json', defaultLanguage);
 
-        fse.writeFileSync(self.addonsFactory.project.root + '/app/lang-fingerprint.js', 'export default  {"default":"/app-assets/lang/' + languageDir + '/default.' + result + '.json"};');
+        fse.writeFileSync(self.addonsFactory.project.root + '/app/lang-fingerprint.js', 'export default  {"default":"' + languageDir + '/default.' + result + '.json"};');
 
         console.log("Language files built.");
 
